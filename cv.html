@@ -12,7 +12,39 @@
     <div class="content">
         <div class="grid-container">
             <div class="grid-item">
-                <img src="img/logo.png" alt="Logo" style="width: 90%;">
+                <svg width="112" height="106">
+                    <defs>
+                        <clipPath id="c3">
+                            <circle r="33" cx="33" cy="73" />
+                        </clipPath>
+
+                        <clipPath id="c1">
+                            <circle r="33" cx="56" cy="33" />
+
+                        </clipPath>
+
+                        <clipPath id="clip_of_c1_and_c2_and_c3">
+                            <circle r="33" cx="56" cy="33" clip-path="url(#clip_of_c2_and_c3)" />
+                        </clipPath>
+
+                        <clipPath id="clip_of_c2_and_c3">
+                            <circle r="33" cx="79" cy="73" clip-path="url(#c3)" />
+                        </clipPath>
+                    </defs>
+                    <!-- Gives circle 1 -->
+                    <circle id="circle1" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" />
+
+                    <!-- Gives circle 2 -->
+                    <circle id="circle2" r="33" cx="79" cy="73" fill="rgb(30,61,79)" />
+
+                    <!--Clip circle 3 with circle 1 -->
+                    <circle id="circle3" r="33" cx="33" cy="73" fill="rgb(65, 130, 168)" />
+                    <circle id="circle1_" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" clip-path="url(#c3)" />
+
+                    <!--Clip black circle with intersection of left and right, which itself is
+                        an intersection already from right and bottom circle -->
+                    <circle r="33" cx="56" cy="33" fill="white" clip-path="url(#clip_of_c1_and_c2_and_c3)" />
+                </svg>
             </div>
 
             <div class="grid-item">
@@ -69,7 +101,8 @@
                 <strong>PhD in Mathematics</strong><br>
                 Freie Universität Berlin, Germany<br>
                 <li>Degree: Doctor rerum naturalium (Dr. rer. nat.)</li>
-                <li>Disseration: <a href="https://refubium.fu-berlin.de/handle/fub188/42466" target="_black">Clouds
+                <li>Disseration: <a href="https://refubium.fu-berlin.de/handle/fub188/42466" target="_black">Point
+                        Clouds
                         Between Local and Global Approaches</a></li>
             </div>
             <div class="grid-item">2017</div>
@@ -81,6 +114,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Include script -->
+    <script src="script.js"></script>
 </body>
 
 </html>

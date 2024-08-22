@@ -1,18 +1,53 @@
 <html>
+
 <head>
     <title>Eric Zimmermann</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
 </head>
+
 <body>
     <!-- Logo + naviagtion bar -->
     <div class="content">
         <div class="grid-container">
             <div class="grid-item">
-                <img src="img/logo.png" alt="Logo" style="width: 90%;">
+                <svg width="112" height="106">
+                    <defs>
+                        <clipPath id="c3">
+                            <circle r="33" cx="33" cy="73" />
+                        </clipPath>
+
+                        <clipPath id="c1">
+                            <circle r="33" cx="56" cy="33" />
+
+                        </clipPath>
+
+                        <clipPath id="clip_of_c1_and_c2_and_c3">
+                            <circle r="33" cx="56" cy="33" clip-path="url(#clip_of_c2_and_c3)" />
+                        </clipPath>
+
+                        <clipPath id="clip_of_c2_and_c3">
+                            <circle r="33" cx="79" cy="73" clip-path="url(#c3)" />
+                        </clipPath>
+                    </defs>
+                    <!-- Gives circle 1 -->
+                    <circle id="circle1" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" />
+
+                    <!-- Gives circle 2 -->
+                    <circle id="circle2" r="33" cx="79" cy="73" fill="rgb(30,61,79)" />
+
+                    <!--Clip circle 3 with circle 1 -->
+                    <circle id="circle3" r="33" cx="33" cy="73" fill="rgb(65, 130, 168)" />
+                    <circle id="circle1_" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" clip-path="url(#c3)" />
+
+                    <!--Clip black circle with intersection of left and right, which itself is
+                        an intersection already from right and bottom circle -->
+                    <circle r="33" cx="56" cy="33" fill="white" clip-path="url(#clip_of_c1_and_c2_and_c3)" />
+                </svg>
             </div>
-            
+
             <div class="grid-item">
                 <div class="navigation">
                     <a id="aAbout" href="index.html" style="color: rgb(231, 172, 33)">About</a>
@@ -56,8 +91,7 @@
                     <a href="https://link.springer.com/chapter/10.1007/978-981-16-5576-0_6" target="_blank">Article</a>
                     &#x2022; <a href="./preprint/2021_YSZP_SurfaceDenoisingRobustStatistics.pdf"
                         target="_blank">Preprint</a>
-                    &#x2022; <a href="bib/2021_YSZP_SurfaceDenoisingRobustStatistics.bib"
-                        target="_blank">BibTex</a>
+                    &#x2022; <a href="bib/2021_YSZP_SurfaceDenoisingRobustStatistics.bib" target="_blank">BibTex</a>
                 </p>
 
                 <strong>A Large Scale Evaluation Of Shape Aware Neighborhood Weights And Neighborhood Sizes</strong><br>
@@ -101,11 +135,15 @@
                 <p id="link">
                     <a href="https://www.sciencedirect.com/science/article/abs/pii/S0097849318300797?via%3Dihub"
                         target="_blank">Article</a>
-                        &#x2022; <a href="preprint/2018_YRSZP_Denoising.pdf" target="_blank">Preprint</a>
-                        &#x2022; <a href="bib/2018_YRSZP_Denoising.bib" target="_blank">BibTex</a>
+                    &#x2022; <a href="preprint/2018_YRSZP_Denoising.pdf" target="_blank">Preprint</a>
+                    &#x2022; <a href="bib/2018_YRSZP_Denoising.bib" target="_blank">BibTex</a>
                 </p>
             </div>
         </div>
     </div>
+
+    <!-- Include script -->
+    <script src="script.js"></script>
 </body>
+
 </html>

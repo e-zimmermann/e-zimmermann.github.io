@@ -14,9 +14,41 @@
     <div class="content">
         <div class="grid-container">
             <div class="grid-item">
-                <img src="img/logo.png" alt="Logo" style="width: 90%;">
+                <svg width="112" height="106">
+                    <defs>
+                        <clipPath id="c3">
+                            <circle r="33" cx="33" cy="73" />
+                        </clipPath>
+
+                        <clipPath id="c1">
+                            <circle r="33" cx="56" cy="33" />
+
+                        </clipPath>
+
+                        <clipPath id="clip_of_c1_and_c2_and_c3">
+                            <circle r="33" cx="56" cy="33" clip-path="url(#clip_of_c2_and_c3)" />
+                        </clipPath>
+
+                        <clipPath id="clip_of_c2_and_c3">
+                            <circle r="33" cx="79" cy="73" clip-path="url(#c3)" />
+                        </clipPath>
+                    </defs>
+                    <!-- Gives circle 1 -->
+                    <circle id="circle1" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" />
+
+                    <!-- Gives circle 2 -->
+                    <circle id="circle2" r="33" cx="79" cy="73" fill="rgb(30,61,79)" />
+
+                    <!--Clip circle 3 with circle 1 -->
+                    <circle id="circle3" r="33" cx="33" cy="73" fill="rgb(65, 130, 168)" />
+                    <circle id="circle1_" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" clip-path="url(#c3)" />
+
+                    <!--Clip black circle with intersection of left and right, which itself is
+                        an intersection already from right and bottom circle -->
+                    <circle r="33" cx="56" cy="33" fill="white" clip-path="url(#clip_of_c1_and_c2_and_c3)" />
+                </svg>
             </div>
-            
+
             <div class="grid-item">
                 <div class="navigation">
                     <a id="aAbout" href="index.html" style="color: rgb(30,61,79)">About</a>
@@ -27,14 +59,18 @@
         </div>
     </div>
 
+
+
     <!-- Content area -->
     <div class="content">
         <div class="grid-container">
             <div class="grid-item"></div>
             <div class="grid-item">
-                <img src="img/ez.png" alt="Eric Zimmermann" style="float:right; width: 40%; padding-left: 10px; padding-bottom: 10px;">
+                <img src="img/ez.png" alt="Eric Zimmermann"
+                    style="float:right; width: 40%; padding-left: 10px; padding-bottom: 10px;">
 
-                <p style="margin-top: 0px;">I am a research assistant at the Institute for Visual & Analytic Computing at the University of
+                <p style="margin-top: 0px;">I am a research assistant at the Institute for Visual & Analytic Computing
+                    at the University of
                     Rostock,
                     Germany.
                 </p>
@@ -54,12 +90,17 @@
                     Approaches".</p>
                 <p>My reserarch interests connect Mathematics and Computer Science. I am fascinated by structural
                     aspects found
-                    in topology, discrete mathematics, and differential geometry dealing for instance with geometric primitives like
-                    points and linking and exploring them through visualization (lately in mixed reality) and via algorithmic approaches.
+                    in topology, discrete mathematics, and differential geometry dealing for instance with geometric
+                    primitives like
+                    points and linking and exploring them through visualization (lately in mixed reality) and via
+                    algorithmic approaches.
                 </p>
             </div>
         </div>
     </div>
+
+    <!-- Include script -->
+    <script src="script.js"></script>
 </body>
 
 </html>
