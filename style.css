@@ -13,7 +13,7 @@ h1 {
 
 /* Navigation bar settings */
 .navigation {
-  margin: 40px auto 0px 0px;
+  margin: 45px auto 0px 0px;
   text-align: left;
 }
 
@@ -58,4 +58,8 @@ a:visited {
 #link { /* Resets link properties used in content area */
   margin: 0px 0px 20px 0px;
   text-align: right;
+}
+
+#circle1:hover,#circle1_:hover,#circle2:hover,#circle3:hover {
+  fill: rgb(247, 213, 134);
 }
