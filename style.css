@@ -47,7 +47,7 @@ a:visited {
 
 .grid-container { /* Grid layout for 2-column grid on publications and cv */
   display:grid;
-  grid-template-columns: 125px auto;
+  grid-template-columns: 150px auto;
   margin-bottom: 20px;
 }
 
