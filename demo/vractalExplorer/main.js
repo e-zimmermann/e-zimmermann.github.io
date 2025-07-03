@@ -1,8 +1,8 @@
-import * as BABYLON from "@babylonjs/core";
-import * as GUI from "@babylonjs/gui";
+//import * as BABYLON from "@babylonjs/core";
+//import * as GUI from "@babylonjs/gui";
 
 // Enables GLTF/GLB loader for loading controller models from WebXR Input registry
-import "@babylonjs/loaders/glTF";
+//import "@babylonjs/loaders/glTF";
 
 // Current workaround to manually change function pairs for shader
 const initialFunctionPairChoice = 0;
