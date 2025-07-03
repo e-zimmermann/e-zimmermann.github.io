@@ -27,9 +27,10 @@ const createScene = async function () {
     camera.setTarget = new BABYLON.Vector3(0, 0, 0);
     camera.attachControl(canvas, false);
     camera.onViewMatrixChangedObservable = new BABYLON.Observable();
-    camera.inputs.addMouseWheel();
     camera.wheelPrecision = 500;
     camera.minZ = 0;
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+    light.intensity = 0.7;
 
     // Following defines snippets for fragment shader injections. The last
     // one can be modified by the used via the GUI.
@@ -128,8 +129,6 @@ const createScene = async function () {
         // Release effect, i.e. remove shader from cache
         if (!init) {
             engine._releaseEffect(shaderMaterial.getEffect());
-            /* engine.releaseEffects();
-            engine.createEffect() */
         }
 
         // Generate new shader
@@ -140,7 +139,11 @@ const createScene = async function () {
                 needAlphaBlending: true,
             },
         );
-        //shaderMaterial.backFaceCulling = false;
+        // FIXME: The following line just checks whether material is ready to render mesh
+        // However this line currently causes the shader to be compiled almost instantly...
+        // Another way could be to use callback/promise in connection with shaderMaterial.onCompiled
+        shaderMaterial.isReady();
+
         viewPlane.material = shaderMaterial;
 
         // Reassign values and update observables
@@ -531,3 +534,8 @@ createScene().then((scene) => {
 window.addEventListener("resize", function () {
     engine.resize();
 });
+
+
+function w(value) {
+    return console.log(value);
+}
