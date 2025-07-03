@@ -1,18 +1,3 @@
-/* import * as BABYLON from "@babylonjs/core";
-import * as GUI from "@babylonjs/gui";
-
-// Enables GLTF/GLB loader for loading controller models from WebXR Input registry
-import "@babylonjs/loaders/glTF"; */
-
-// Current workaround to manually change function pairs for shader
-const initialFunctionPairChoice = 0;
-
-/*
-TODO:
-1. Configure effect release
-2. Make VR accessible
-*/
-
 var canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true); // Generates the BABYLON 3D Engine
 const createScene = async function () {
@@ -89,7 +74,7 @@ const createScene = async function () {
         viewPlane.position = camera.getFrontPosition(2); // Places display in front of camera in absolute distance
     })
     // Note, shader material values are initially set in buildGUI method
-    BABYLON.Effect.IncludesShadersStore['functionPair'] = functionPairs[initialFunctionPairChoice];
+    BABYLON.Effect.IncludesShadersStore['functionPair'] = functionPairs[0];
     var shaderMaterial;
     newShader(true);
 
@@ -380,7 +365,7 @@ const createScene = async function () {
             minimum: 1 / epsExp,
             maximum: 0.01,
             value: 0.01,
-            step: 100 / epsExp,
+            step: 10 / epsExp,
             width: "300px",
             height: sliderHeight,
             paddingTop: "0px",
