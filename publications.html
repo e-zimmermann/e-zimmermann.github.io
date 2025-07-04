@@ -9,54 +9,9 @@
 </head>
 
 <body>
-    <!-- Logo + naviagtion bar -->
-    <div class="content">
-        <div class="grid-container">
-            <div class="grid-item">
-                <svg width="112" height="106">
-                    <defs>
-                        <clipPath id="c3">
-                            <circle r="33" cx="33" cy="73" />
-                        </clipPath>
-
-                        <clipPath id="c1">
-                            <circle r="33" cx="56" cy="33" />
-
-                        </clipPath>
-
-                        <clipPath id="clip_of_c1_and_c2_and_c3">
-                            <circle r="33" cx="56" cy="33" clip-path="url(#clip_of_c2_and_c3)" />
-                        </clipPath>
-
-                        <clipPath id="clip_of_c2_and_c3">
-                            <circle r="33" cx="79" cy="73" clip-path="url(#c3)" />
-                        </clipPath>
-                    </defs>
-                    <!-- Gives circle 1 -->
-                    <circle id="circle1" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" />
-
-                    <!-- Gives circle 2 -->
-                    <circle id="circle2" r="33" cx="79" cy="73" fill="rgb(30,61,79)" />
-
-                    <!--Clip circle 3 with circle 1 -->
-                    <circle id="circle3" r="33" cx="33" cy="73" fill="rgb(65, 130, 168)" />
-                    <circle id="circle1_" r="33" cx="56" cy="33" fill="rgb(231, 172, 33)" clip-path="url(#c3)" />
-
-                    <!--Clip black circle with intersection of left and right, which itself is
-                        an intersection already from right and bottom circle -->
-                    <circle r="33" cx="56" cy="33" fill="white" clip-path="url(#clip_of_c1_and_c2_and_c3)" />
-                </svg>
-            </div>
-
-            <div class="grid-item">
-                <div class="navigation">
-                    <a id="aAbout" href="index.html" style="color: rgb(231, 172, 33)">About</a>
-                    <a id="aPublications" href="publications.html" style="color: rgb(30,61,79)">Publications</a>
-                    <a id="aCV" href="cv.html" style="color: rgb(231, 172, 33)">CV</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Load naviagtion and logo by changing div content -->
+    <div id="navigationDiv" class="content"></div>
+    <script src="nav.js"></script>
 
     <!-- Content area -->
     <div class="content">
@@ -158,9 +113,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Include script -->
-    <script src="script.js"></script>
 </body>
 
 </html>
