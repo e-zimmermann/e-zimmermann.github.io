@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VRactal Explorer</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+    <!-- Load naviagtion and logo by changing div content -->
+    <div id="navigationDiv" class="content"></div>
+    <script src="../nav.js"></script>
+    <script>document.getElementById('aDemos').style = "color: rgb(30,61,79)";</script>
+
+    <!-- Content area -->
+    <div class="content">
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_teaser.png">
+            </div>
+
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h1>VRactal Explorer</h1>
+            </div>
+
+            <div class="grid-item">Links</div>
+            <div class="grid-item">
+                <a href="../demos/vractalExplorer/vractalExplorerDemo.html" target="_blank">Demo</a> &#x2022;
+                <a href="https://github.com/e-zimmermann/vractal-explorer" target="_blank">Github</a> &#x2022;
+                <a href="http://archive.bridgesmathart.org/2025/bridges2025-373.html" target="_blank">Article</a>
+                &#x2022;
+                <a href="#vractalExplorerGallery">Gallery</a>
+            </div>
+
+            <div class="grid-item">Description</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">
+                    This demo allows to generate geometric shapes in 3D via the evaluation of predefined or
+                    user-given
+                    functions
+                    <math>
+                        <mi>f, g</mi>
+                        <mo>:</mo>
+                        <msup>
+                            <mn> &reals;</mn>
+                            <mn>3</mn>
+                        </msup>
+                        <mo>&rarr;</mo>
+                        <msup>
+                            <mn> &reals;</mn>
+                            <mn>3</mn>
+                        </msup>
+                    </math>
+                    throughout three iterative schemes. It represents the implementation of the <a
+                        href="http://archive.bridgesmathart.org/2025/bridges2025-373.html" target="_blank">article</a>
+                    published at the Bridges conference 2025 and it uses the web-based 3D engine <a
+                        ahref="https://www.babylonjs.com/" target="_blank">babylon.js</a>
+                    together with GPU-based raymarching. The code is available on <a
+                        href="https://github.com/e-zimmermann/vractal-explorer" target="_blank">github</a>.
+                </p>
+            </div>
+
+            <div class="grid-item">Instructions</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">The demo runs as web-application with the option to
+                    enter the VR mode (described below). After launch
+                    the settings can be toggled using <mark>y</mark> on the keyboard and they look like:</p>
+                <img src="../img/demos/vractalExplorer/settings.png" width="400" class="imgCenter">
+
+                <p>
+                    The following list describes the settings and expressions/references used therein refer to the <a
+                        href="http://archive.bridgesmathart.org/2025/bridges2025-373.html" target="_blank">article</a>:
+                <ul>
+                    <li><mark>mult</mark> allows to choose among the three implemented iterative schemes: <mark>f x
+                            g</mark>, <mark>f x g + c</mark>, and <mark>f x g + const</mark>
+                        refer to Equations (3), (4), and (5), respectively.</li>
+                    <li><mark>f, g</mark> allows to choose among predefined functions and
+                        the option <mark>user defined</mark>. When the latter is chosen, two input fields appear in
+                        which functions can be provided
+                        in OpenGL Shading Language (glsl). The following expressions are available:
+                        <ul>
+                            <li><mark>p</mark> which is a vec3 and gets passed as argument to the multiplication with
+                                coordinates <mark>p.x, p.y, p.z</mark>;</li>
+                            <li><mark>r</mark> is the Euclidean length of <mark>p</mark>;</li>
+                            <li><mark>cosPhi, sinPhi, cosTheta1, cosTheta2, cosTheta, sinTheta</mark> represent the
+                                trigonometric evaluations of the angular arguments obtained from <mark>p</mark> derived
+                                from the reformulation of trigonometric functions.</li>
+                        </ul>
+                    </li>
+                    The functions provided in the input fields are evlatued after clicking <mark>Apply</mark>.
+                    <li><mark>#iterations</mark> determines the number of times the iteration scheme gets evaluated. It
+                        ranges between 0 and 100.</li>
+                    <li><mark>eps</mark> determines the step size for the constant raymarching. It ranges between 1.e-5
+                        and 1.e-2.</li>
+                    <li><mark>radius</mark> determines the radius of the ball at the origin which is only considered for
+                        the raymarching. The square of this value is also used to determine the divergence throughout
+                        the iterative process, i.e., when a point throughout
+                        the iterative process has length larger than the squared radius the originally considered point in
+                        space does not belong to the shape. It ranges between 0 to 10.</li>
+                    <li><mark>Julia constant</mark> determines the constant used in the iterative scheme from Equation
+                        (5). The input field allows
+                        to take three float values separated by white space, gets send to the GPU as a vec3, and is evaluated directly.
+                    </li>
+                </ul>
+                </p>
+                <p>Rotation and translation in the scene can be achieved by holding the <mark>left mouse</mark> or <mark>right mouse</mark>,
+                respectively. The <mark>mouse wheel</mark> allows to zoom in and out.</p>
+
+
+                <p><strong>VR Mode</strong><br>
+                    <img src="../img/demos/vractalExplorer/vrMode.png" alt="vrMode"
+                    style="float:right; padding-left: 25px; padding-bottom: 25px;">
+                    When the demo-page is accessed on an VR-applicable device like a head mounted display a small icon (see inset) allows to toggle the VR mode.
+                    The following list of controls refer to a Meta Quest 3 headset:
+                    <ul>
+                        <li>The left controller button <mark>y</mark> toggles the settings display;</li>
+                        <li>The left controller thumbstick allows forward and backward movement in gaze direction.</li>
+                    </ul>
+
+
+                </p>
+            </div>
+
+            <div id="vractalExplorerGallery" class="grid-item">Gallery</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">The following four renderings are obtained using functions f, g = f_A, g_A in the iterative scheme mult = f x g + const with
+                    #iterations = 10, eps = 5.e-5, radius = 2, and Julia constant = -1. 0. 0.. The view directions for the second, third, and fourth are along the x-, y-, and z-axis, respectively.</p>
+                <div class="grid-container_gallery_display">
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10_03_viewAlongXAxis.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_03_viewAlongXAxis_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongYAxis.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongYAxis_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongZAxis.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongZAxis_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+                </div>
+
+                <p style="margin-top: 0px;">The following four renderings only differ to the previous examples w.r.t. #iterations = 100.</p>
+                <div class="grid-container_gallery_display">
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_03_viewAlongXAxis.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_03_viewAlongXAxis_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongYAxis.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongYAxis_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongZAxis.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongZAxis_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

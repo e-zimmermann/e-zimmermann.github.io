@@ -39,9 +39,10 @@ document.getElementById('navigationDiv').innerHTML = `
 
             <div class="grid-item">
                 <div class="navigation">
-                    <a id="aAbout" href="index.html" style="color: rgb(30,61,79)">About</a>
-                    <a id="aPublications" href="publications.html" style="color: rgb(231, 172, 33)">Publications</a>
-                    <a id="aCV" href="cv.html" style="color: rgb(231, 172, 33)">CV</a>
+                    <a id="aAbout" href="../index.html" style="color: rgb(231, 172, 33)">About</a>
+                    <a id="aPublications" href="../publications.html" style="color: rgb(231, 172, 33)">Publications</a>
+                    <a id="aDemos" href="../demos.html" style="color: rgb(231, 172, 33)">Demos</a>
+                    <a id="aCV" href="../cv.html" style="color: rgb(231, 172, 33)">CV</a>
                 </div>
             </div>
         </div>`;
