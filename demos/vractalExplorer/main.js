@@ -465,50 +465,53 @@ const createScene = async function () {
     //
     // Get XR ready
     //
-    //  try {
-    const xr = await scene.createDefaultXRExperienceAsync({
-        teleportationOptions: {
-            // Disables teleportation at all
-            forceHandedness: 'none'
-        },
-        // uiOptions: { sessionMode: 'immersive-ar' }
-    });
-    var xrCam = xr.input.xrCamera;
-    // On xrCam loaded
-    xrCam.onXRCameraInitializedObservable.add(function () {
-        viewPlane.position = xrCam.getFrontPosition(1.5);
-        controlMesh.position = xrCam.getFrontPosition(1);
-
-        // On xrCam changed
-        scene.onBeforeRenderObservable.add(function () {
+    try {
+        const xr = await scene.createDefaultXRExperienceAsync({
+            teleportationOptions: {
+                // Disables teleportation at all
+                forceHandedness: 'none'
+            },
+            // uiOptions: { sessionMode: 'immersive-ar' }
+        });
+        var xrCam = xr.input.xrCamera;
+        // On xrCam loaded
+        xrCam.onXRCameraInitializedObservable.add(function () {
             viewPlane.position = xrCam.getFrontPosition(1.5);
             controlMesh.position = xrCam.getFrontPosition(1);
-        });
-    })
 
-    xr.input.onControllerAddedObservable.add((controller) => {
-        controller.onMotionControllerInitObservable.add((motionController) => { // Gets motion controller
-            if (motionController.handness === 'left') {
-                const xr_ids = motionController.getComponentIds();
-
-                // Control forward/backward movement when thumbstick changes
-                let thumbstickComponent = motionController.getComponent(xr_ids[2]);
-                thumbstickComponent.onAxisValueChangedObservable.add((axes) => {
-                    // Translation of xrCam in space
-                    let dir = xrCam.target.add(xrCam.position.scale(-1)).normalize();
-                    xrCam.position = xrCam.position.add(dir.scale(-axes.y * controllerSpeed));
-                });
-
-                //
-                let ybuttonComponent = motionController.getComponent(xr_ids[4]);
-                ybuttonComponent.onButtonStateChangedObservable.add(() => {
-                    if (ybuttonComponent.pressed) {
-                        toggleControl();
-                    }
-                });
-            }
+            // On xrCam changed
+            scene.onBeforeRenderObservable.add(function () {
+                viewPlane.position = xrCam.getFrontPosition(1.5);
+                controlMesh.position = xrCam.getFrontPosition(1);
+            });
         })
-    });
+
+        xr.input.onControllerAddedObservable.add((controller) => {
+            controller.onMotionControllerInitObservable.add((motionController) => { // Gets motion controller
+                if (motionController.handness === 'left') {
+                    const xr_ids = motionController.getComponentIds();
+
+                    // Control forward/backward movement when thumbstick changes
+                    let thumbstickComponent = motionController.getComponent(xr_ids[2]);
+                    thumbstickComponent.onAxisValueChangedObservable.add((axes) => {
+                        // Translation of xrCam in space
+                        let dir = xrCam.target.add(xrCam.position.scale(-1)).normalize();
+                        xrCam.position = xrCam.position.add(dir.scale(-axes.y * controllerSpeed));
+                    });
+
+                    //
+                    let ybuttonComponent = motionController.getComponent(xr_ids[4]);
+                    ybuttonComponent.onButtonStateChangedObservable.add(() => {
+                        if (ybuttonComponent.pressed) {
+                            toggleControl();
+                        }
+                    });
+                }
+            })
+        });
+    }
+    catch {
+    }
 
     return scene;
 };
