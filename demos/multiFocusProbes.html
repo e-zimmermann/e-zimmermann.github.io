@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>VRactal Explorer</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+    <!-- Load naviagtion and logo by changing div content -->
+    <div id="navigationDiv" class="content"></div>
+    <script src="../nav.js"></script>
+    <script>document.getElementById('aDemos').style = "color: rgb(30,61,79)";</script>
+
+    <!-- Content area -->
+    <div class="content">
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <img src="../img/demos/multiFocusProbes/teaser.png">
+            </div>
+
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h1>Multi-Focus Probes</h1>
+            </div>
+
+            <div class="grid-item">Links</div>
+            <div class="grid-item">
+                <a href="../demos/multiFocusProbes/multiFocusProbesDemo.html" target="_blank">Demo</a> &#x2022;
+                <a href="https://arxiv.org/abs/2507.01140" target="_blank">arXiv</a>
+            </div>
+
+            <div class="grid-item">Description</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">
+                    This demo allows to interact with node-link diagrams in VR. It represents the implementation of the
+                    <a href="https://arxiv.org/abs/2507.01140" target="_blank">preprint (arXiv)</a>, which is to be
+                    published as a
+                    short paper at the IEEE VIS conference 2025. It uses the web-based 3D engine <a
+                        ahref="https://www.babylonjs.com/" target="_blank">babylon.js</a>.
+                </p>
+            </div>
+
+            <div class="grid-item">Instructions</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">
+                    <img src="../img/demos/vractalExplorer/vrMode.png" alt="vrMode"
+                        style="float:right; padding-left: 25px; padding-bottom: 5px;">
+                    The demo runs as web-application with the option to enter the VR mode. When the demo-page is
+                    accessed on an VR-applicable device like a head mounted display a small icon
+                    (see inset) allows to toggle the VR mode. It will load a soccer player data set where all nodes are
+                    initially
+                    placed w.r.t. to pre-calculated positions from a force directed layout.
+
+                    The following list describes the functionality w.r.t. a Meta Quest 3 (HMD) and further details can
+                    be found in the preprint:
+                <ul>
+                    <li>Button <mark>X</mark> (left controller) allows to generate a new probe and to place or reselect
+                        it. When the placed probe has non-empty intersection with
+                        nodes from the node-link diagram, the respective induced subgraph will appear in front of the
+                        user.</li>
+                    <li>The <mark>Thumbstick</mark> (left controller) allows to rescale (axes left and right) and
+                        translate (axes backward and forward) a probe along the left controller's ray. If a probe is
+                        active
+                        (see next point)
+                        it allows to rotate its content (when the ray hits the sphere surrounding the
+                        content). When it is pressed a probe is placed
+                        automatically at a node with the largest number of incident links (one representative if not
+                        unique).</li>
+                    <li>When the left controller ray hits the probe content (the copy in front of the user)
+                        then button <mark>Y</mark> sets
+                        the respective probe <strong>active</strong>, which is visually highlighted by a
+                        content-surrounding sphere and a
+                        tunnel connecting the probe with its content.</li>
+                    <li>Pressing the <mark>Squeeze</mark> button (left controller) while the left ray hits a node or
+                        link (from the whole diagram or the probe content)
+                        a slider shows up allowing to change the color of the respective node or link. Pressing the same
+                        button lets the slider dissapear.</li>
+                    <li>Pressing and holding the <mark>Trigger</mark> button (left or right controller) allows to
+                        replace a probe content in front of the user as long as the respective probe is active.</li>
+                    <li>Button <mark>A</mark> (right controller) allows to remove nodes, links, or probes when the
+                        right ray hits the respective object.</li>
+                    <li>Button <mark>B</mark> (right controller) allows to select two nodes (when the right ray hits the
+                        respective nodes) in either combination of the whole diagram
+                        or probe content and inserts a new link.</li>
+                    <li>The <mark>Thumbstick</mark> (right controller) allows to move (axes backward and forward) in
+                        gaze direction whenever
+                        the right ray does not hit the sphere surrounding the content of an active probe. If it hits
+                        such a sphere it will perform a deformation of the diagram
+                        w.r.t. all active probes. Pressing it, changes the layout of the diagram alternating between a
+                        circular and a force directed layout, where the latter uses pre-calculated positions.</li>
+                    <li>The <mark>Squeeze</mark> button (right controller) toggles the highlight of the link created at
+                        last.</li>
+                </ul>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
