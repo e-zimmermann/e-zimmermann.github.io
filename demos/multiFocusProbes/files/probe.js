@@ -1,4 +1,4 @@
-import { rotate, nextColor4 } from "./tools";
+import { rotate, nextColor4 } from "./tools.js";
 import {
     probeInitialScale,
     probeInitialPosition,
@@ -11,7 +11,7 @@ import {
     probeColors,
     linkHighlightRadius,
     nodeHighlightScaleValue
-} from "./config";
+} from "./config.js";
 
 export { Probe }
 

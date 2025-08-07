@@ -1,6 +1,6 @@
 //import * as d3force from 'd3-force-3d'; // NOTE: Currently not in use for this demo
-import { loadGraphJSON } from "./loaderGraphJSON";
-import { nodeInitialScale, nodeSegmentNumber, linkTessellationNumber, initialLinkRadius, colorDeselected, accuracy } from "./config";
+import { loadGraphJSON } from "./loaderGraphJSON.js";
+import { nodeInitialScale, nodeSegmentNumber, linkTessellationNumber, initialLinkRadius, colorDeselected, accuracy } from "./config.js";
 
 export { Graph }
 

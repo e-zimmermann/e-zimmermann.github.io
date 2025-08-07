@@ -1,5 +1,5 @@
-import { Probe } from './files/probe';
-import { Graph } from './files/graph';
+import { Probe } from './files/probe.js';
+import { Graph } from './files/graph.js';
 import {
     probeTranslateMin,
     probeTranslateMax,
@@ -10,8 +10,8 @@ import {
     colorSelected,
     colorDeselected,
     nodeInitialScaleValue,
-} from './files/config';
-import { color4 } from "./files/tools";
+} from './files/config.js';
+import { color4 } from "./files/tools.js";
 
 var canvas = document.getElementById("renderCanvas");
 const engine = new BABYLON.Engine(canvas, true); // Generates the BABYLON 3D Engine
