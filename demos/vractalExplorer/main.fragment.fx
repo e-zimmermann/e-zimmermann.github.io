@@ -14,7 +14,7 @@ in vec4 fragPosWorld;
 
 // Define global values
 int maxIterationsNormalApprox = 10; // Maximal number of iterations for normal approximation (experimental)
-float clarityAlpha = 0.; // Clarity factor
+float clarityAlpha; // Clarity factor
 float clarityDelta = 1.; // Clarity exponent
 
 //
@@ -79,7 +79,15 @@ else {
 // Calculate distance on ray
 //
 float getDistance(float clarityDist) {
-return max(clarityAlpha*pow(clarityDist, clarityDelta), eps);
+    if (clarityDelta == 1.) {
+        return max(clarityAlpha*clarityDist, eps);
+    }
+    else if (clarityDelta == 2.) {
+        return max(clarityAlpha*clarityDist*clarityDist, eps);
+    }
+    else {
+        return max(clarityAlpha*pow(clarityDist, clarityDelta), eps);
+    }
 }
 
 //
@@ -89,7 +97,6 @@ return max(clarityAlpha*pow(clarityDist, clarityDelta), eps);
 //
 bool evaluatePointAndObject(inout vec3 c, vec3 rayDir, inout float dist) {
 int iter; // Number of iterations used throughout method
-clarityAlpha = eps; // Set initial clarity alpha to chosen eps value
 float clarityDist = length(cameraPosition.xyz - c);
 dist = eps; // Set initial distance
 vec3 f, g;
@@ -323,6 +330,9 @@ vec3 rayDir = normalize(fragPosInSpace - pt);
 // Render inside a bounding sphere
 float b = dot(rayDir, pt);
 float discriminant = b*b-dot(pt, pt)+radiusSq;
+
+// Set initial clarity alpha to chosen eps value
+clarityAlpha = eps;
 
 // Only consider case in which bounding sphere got hit twice
 // Other case should not occur most likely

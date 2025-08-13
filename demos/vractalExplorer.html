@@ -20,7 +20,7 @@
         <div class="grid-container">
             <div class="grid-item"></div>
             <div class="grid-item">
-                <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_teaser.png">
+                <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i10_teaser.png">
             </div>
 
             <div class="grid-item"></div>
@@ -100,97 +100,189 @@
                     <li><mark>radius</mark> determines the radius of the ball at the origin which is only considered for
                         the raymarching. The square of this value is also used to determine the divergence throughout
                         the iterative process, i.e., when a point throughout
-                        the iterative process has length larger than the squared radius the originally considered point in
+                        the iterative process has length larger than the squared radius the originally considered point
+                        in
                         space does not belong to the shape. It ranges between 0 to 10.</li>
                     <li><mark>Julia constant</mark> determines the constant used in the iterative scheme from Equation
                         (5). The input field allows
-                        to take three float values separated by white space, gets send to the GPU as a vec3, and is evaluated directly.
+                        to take three float values separated by white space, gets send to the GPU as a vec3, and is
+                        evaluated directly.
                     </li>
                 </ul>
                 </p>
-                <p>Rotation and translation in the scene can be achieved by holding the <mark>left mouse</mark> or <mark>right mouse</mark>,
-                respectively. The <mark>mouse wheel</mark> allows to zoom in and out.</p>
+                <p>Rotation and translation in the scene can be achieved by holding the <mark>left mouse</mark> or
+                    <mark>right mouse</mark>,
+                    respectively. The <mark>mouse wheel</mark> allows to zoom in and out.
+                </p>
 
 
                 <p><strong>VR Mode</strong><br>
                     <img src="../img/demos/vractalExplorer/vrMode.png" alt="vrMode"
-                    style="float:right; padding-left: 25px; padding-bottom: 25px;">
-                    When the demo-page is accessed on an VR-applicable device like a head mounted display a small icon (see inset) allows to toggle the VR mode.
+                        style="float:right; padding-left: 25px; padding-bottom: 25px;">
+                    When the demo-page is accessed on an VR-applicable device like a head mounted display a small icon
+                    (see inset) allows to toggle the VR mode.
                     The following list of controls refer to a Meta Quest 3 headset:
-                    <ul>
-                        <li>The left controller button <mark>Y</mark> toggles the settings display;</li>
-                        <li>The left controller thumbstick allows forward and backward movement in gaze direction.</li>
-                    </ul>
+                <ul>
+                    <li>The left controller button <mark>Y</mark> toggles the settings display;</li>
+                    <li>The left controller thumbstick allows forward and backward movement in gaze direction.</li>
+                </ul>
 
 
                 </p>
             </div>
 
+            <!-- Example 1 to 3 -->
             <div id="vractalExplorerGallery" class="grid-item">Gallery</div>
             <div class="grid-item">
-                <p style="margin-top: 0px;">The following four renderings are obtained using functions f, g = f_A, g_A in the iterative scheme mult = f x g + const with
-                    #iterations = 10, eps = 5.e-5, radius = 2, and Julia constant = -1. 0. 0.. The view directions for the second, third, and fourth are along the x-, y-, and z-axis, respectively.</p>
+                <p style="margin-top: 0px;"><strong>Examples 1 to 3</strong><br>
+                    The following renderings are obtained from the iterative scheme mult = f x g, #iterations =
+                    100, and eps = 5.e-5. The leftmost uses functions f, g = f_A, g_A and a radius = 10. Note that the shape scales w.r.t. the radius without changing its appearance. The second rendering with f,
+                    g = f_B, g_B and radius = 6 shows an extension into 3-space suggesting a partition of the same into
+                    two
+                    components. The rightmost rendering via f, g = f_C, g_C and radius = 10 also extends through space,
+                    yet
+                    thinning out away from the origin.
+                </p>
+                <div class="grid-container_gallery_display">
+                    <a href="../img/demos/vractalExplorer/scheme_1_example_1.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_1_example_1_teaser.png" width="115px">
+                        </div>
+                    </a>
+                    <a href="../img/demos/vractalExplorer/scheme_1_example_2.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_1_example_2_teaser.png" width="115px">
+                        </div>
+                    </a>
+                    <a href="../img/demos/vractalExplorer/scheme_1_example_3.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_1_example_3_teaser.png" width="115px">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Example 4 and 5 -->
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;"><strong>Examples 4 and 5 - Spherical Representation</strong><br>
+                    In these examples we can see the spherical representation as an extension of the 2D Mandelbrot set
+                    into 3D proposed by Daniel White in 2007. This extension provided the initial
+                    motivation to rephrase the multiplication and apply it throughout different schemes. The renderings
+                    are obtained using mult = f x g + c, #iterations = 10, radius = 2, and eps = 5.e-5. The functions f,
+                    g = f_A, g_A and f, g = f_B, g_B then yield
+                    the two renderings on the left and right, respectively.
+                </p>
+                <div class="grid-container_gallery_display">
+                    <a href="../img/demos/vractalExplorer/mandelbrot3D_spherical_ver1_view1.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/mandelbrot3D_spherical_ver1_view1_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+                    <a href="../img/demos/vractalExplorer/mandelbrot3D_spherical_ver1_view2.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/mandelbrot3D_spherical_ver1_view2_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+                    <a href="../img/demos/vractalExplorer/mandelbrot3D_spherical_ver2_view1.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/mandelbrot3D_spherical_ver2_view1_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+                    <a href="../img/demos/vractalExplorer/mandelbrot3D_spherical_ver2_view2.png" target="_blank">
+                        <div class="grid-item_display">
+                            <img src="../img/demos/vractalExplorer/teaser/mandelbrot3D_spherical_ver2_view2_teaser.png"
+                                width="115px">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Example 6 -->
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;"><strong>Example 6 - Opuntia</strong><br>
+                    The last example is related to Julia sets, because now we observe the behavior of the spherical
+                    representation for different constants similar to
+                    Julia sets in the complex plane. Therefore, we could consider such objects as Julia sets in 3D
+                    caused by the spherical representation mentioned above.
+                    The following four renderings are obtained using functions f, g =
+                    f_A, g_A in the iterative scheme
+                    mult = f x g + const with
+                    #iterations = 10, eps = 5.e-5, radius = 2, and Julia constant = -1. 0. 0.. The view directions for
+                    the second, third, and fourth are along the x-, y-, and z-axis, respectively.
+                    We might call this specific object <i>opuntia</i> named after the plant from the cactus family as
+                    both share similarites w.r.t. their shapes. We thank Prof. Jörg Arndt (TH Nürnberg, Germany)
+                    who suggested that name at the Bridges conference 2025.
+                </p>
                 <div class="grid-container_gallery_display">
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i10_teaser.png"
                                 width="115px">
                         </div>
                     </a>
 
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10_03_viewAlongXAxis.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_03_viewAlongXAxis_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i10_03_viewAlongXAxis_teaser.png"
                                 width="115px">
                         </div>
                     </a>
 
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongYAxis.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongYAxis_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i10_viewAlongYAxis_teaser.png"
                                 width="115px">
                         </div>
                     </a>
 
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongZAxis.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i10_viewAlongZAxis_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i10_viewAlongZAxis_teaser.png"
                                 width="115px">
                         </div>
                     </a>
                 </div>
 
-                <p style="margin-top: 0px;">The following four renderings only differ to the previous examples w.r.t. #iterations = 100.</p>
+                <p style="margin-top: 0px;">
+                    The same properties except #iterations = 100 yield the following renderings.</p>
                 <div class="grid-container_gallery_display">
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i100_teaser.png"
                                 width="115px">
                         </div>
                     </a>
 
-                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_03_viewAlongXAxis.png" target="_blank">
+                    <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_03_viewAlongXAxis.png"
+                        target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_03_viewAlongXAxis_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i100_03_viewAlongXAxis_teaser.png"
                                 width="115px">
                         </div>
                     </a>
 
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongYAxis.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongYAxis_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i100_viewAlongYAxis_teaser.png"
                                 width="115px">
                         </div>
                     </a>
 
                     <a href="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongZAxis.png" target="_blank">
                         <div class="grid-item_display">
-                            <img src="../img/demos/vractalExplorer/scheme_3_example_1_i100_viewAlongZAxis_teaser.png"
+                            <img src="../img/demos/vractalExplorer/teaser/scheme_3_example_1_i100_viewAlongZAxis_teaser.png"
                                 width="115px">
                         </div>
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 </body>

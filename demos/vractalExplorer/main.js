@@ -11,7 +11,6 @@ const createScene = async function () {
     const camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 2, 4, new BABYLON.Vector3(0, 0, 0), scene);
     camera.setTarget = new BABYLON.Vector3(0, 0, 0);
     camera.attachControl(canvas, false);
-    camera.onViewMatrixChangedObservable = new BABYLON.Observable();
     camera.wheelPrecision = 500;
     camera.minZ = 0;
     var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
@@ -482,35 +481,43 @@ const createScene = async function () {
             // On xrCam changed
             scene.onBeforeRenderObservable.add(function () {
                 viewPlane.position = xrCam.getFrontPosition(1.5);
-                controlMesh.position = xrCam.getFrontPosition(1);
+                if (showControl) {
+                    controlMesh.position = xrCam.getFrontPosition(1);
+                }
             });
         })
 
         xr.input.onControllerAddedObservable.add((controller) => {
             controller.onMotionControllerInitObservable.add((motionController) => { // Gets motion controller
-                if (motionController.handness === 'left') {
-                    const xr_ids = motionController.getComponentIds();
+                if (motionController.handedness === 'left') {
+                    let xr_ids = motionController.getComponentIds();
 
                     // Control forward/backward movement when thumbstick changes
-                    let thumbstickComponent = motionController.getComponent(xr_ids[2]);
-                    thumbstickComponent.onAxisValueChangedObservable.add((axes) => {
-                        // Translation of xrCam in space
-                        let dir = xrCam.target.add(xrCam.position.scale(-1)).normalize();
-                        xrCam.position = xrCam.position.add(dir.scale(-axes.y * controllerSpeed));
-                    });
+                    var thumbstickComponent = motionController.getComponent(xr_ids[2]);
+                    if (thumbstickComponent != undefined) {
+                        thumbstickComponent.onAxisValueChangedObservable.add((axes) => {
+                            // Translation of xrCam in space
+                            let dir = xrCam.target.add(xrCam.position.scale(-1)).normalize();
+                            xrCam.position = xrCam.position.add(dir.scale(-axes.y * controllerSpeed));
+                        });
+                    }
 
-                    //
-                    let ybuttonComponent = motionController.getComponent(xr_ids[4]);
-                    ybuttonComponent.onButtonStateChangedObservable.add(() => {
-                        if (ybuttonComponent.pressed) {
-                            toggleControl();
-                        }
-                    });
+                    // Toggles the controls display
+                    var ybuttonComponent = motionController.getComponent(xr_ids[4]);
+                    if (ybuttonComponent != undefined) {
+                        ybuttonComponent.onButtonStateChangedObservable.add(() => {
+                            if (ybuttonComponent.pressed) {
+                                toggleControl();
+                            }
+                        });
+                    }
                 }
             })
+
         });
     }
     catch {
+        console.log("XR mode fails");
     }
 
     return scene;
