@@ -52,16 +52,16 @@ document.getElementById('navigationDiv').innerHTML = `
 
 /* Adds click behavior to navigation logo */
 document.getElementById('circle1').addEventListener('click', function (e) {
-    window.location = "index.html";
+    window.location = "../index.html";
 });
 document.getElementById('circle1_').addEventListener('click', function (e) {
-    window.location = "index.html";
+    window.location = "../index.html";
 });
 document.getElementById('circle2').addEventListener('click', function (e) {
-    window.location = "publications.html";
+    window.location = "../publications.html";
 });
 document.getElementById('circle3').addEventListener('click', function (e) {
-    window.location = "cv.html";
+    window.location = "../cv.html";
 });
 
 /* Mouse hover effects on logo */
