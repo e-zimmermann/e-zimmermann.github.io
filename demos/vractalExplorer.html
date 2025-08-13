@@ -13,7 +13,7 @@
     <!-- Load naviagtion and logo by changing div content -->
     <div id="navigationDiv" class="content"></div>
     <script src="../nav.js"></script>
-    <script>document.getElementById('aDemos').style = "color: rgb(30,61,79)";</script>
+    <script>document.getElementById('aDemos').style = "color: var(--link-color-active)";</script>
 
     <!-- Content area -->
     <div class="content">
@@ -134,7 +134,8 @@
             <!-- Example 1 to 3 -->
             <div id="vractalExplorerGallery" class="grid-item">Gallery</div>
             <div class="grid-item">
-                <p style="margin-top: 0px;"><strong>Examples 1 to 3</strong><br>
+                <p style="margin-top: 0px;">
+                    <strong>Examples 1 to 3</strong><br>
                     The following renderings are obtained from the iterative scheme mult = f x g, #iterations =
                     100, and eps = 5.e-5. The leftmost uses functions f, g = f_A, g_A and a radius = 10. Note that the shape scales w.r.t. the radius without changing its appearance. The second rendering with f,
                     g = f_B, g_B and radius = 6 shows an extension into 3-space suggesting a partition of the same into
@@ -281,6 +282,9 @@
                         </div>
                     </a>
                 </div>
+
+                <p style="margin-top: 0px;">Further examples can be found in the <a
+                        href="http://archive.bridgesmathart.org/2025/bridges2025-373.html" target="_blank">article</a>.</p>
             </div>
 
         </div>

@@ -1,13 +1,71 @@
+/* Declaring custom properties on :root pseudo class to be used globally */
+:root {
+  /* Light Mode */
+  --main-bg-color: white;
+  --link-color: rgb(231, 172, 33);
+  --link-color-hover: rgb(65, 130, 168);
+  --link-color-active: rgb(30, 61, 79);
+  --circle1-color: rgb(231, 172, 33);
+  --circle2-color: rgb(30, 61, 79);
+  --circle3-color: rgb(36, 96, 130);
+  --circle-color-hover: rgb(247, 213, 134);
+  --grid-item-display-hover: rgb(30, 61, 79);
+  --mark-bg-color: white;
+  --mark-color: black;
+  --color: black;
+
+  /* Dark Mode */
+  /* --main-bg-color: rgb(30, 61, 79);
+  --link-color: rgb(231, 172, 33);
+  --link-color-hover: rgb(65, 130, 168);
+  --link-color-active: rgb(110, 168, 202);
+  --circle1-color: rgb(231, 172, 33);
+  --circle2-color: rgb(110, 168, 202);
+  --circle3-color: rgb(36, 96, 130);
+  --circle-color-hover: rgb(247, 213, 134);
+  --grid-item-display-hover: rgb(30, 61, 79);
+  --mark-bg-color: rgb(110, 168, 202);
+  --mark-color: white;
+  --color: rgb(110, 168, 202); */
+
+
+  /* Content layout explanations
+  The content area has content-width as overal size.
+
+  Usually we have a 2-column format (example pages: index.html, publications.html, cv.html).
+  This layout is called grid-container and has a left column width of grid-container-width
+  and a right column width of auto, i.e. takes the remaining of the content.
+
+  Inside the right column of the 2-column-layout we want to allow 4 elements. Thus we have
+  the grid-container_gallery_display with an individual width of grid-container_gallery_display-width, which
+  is the right column (i.e. (content-width - grid-container-width) / 4).
+
+  On other pages like demos.html we showcase elements, thus we use the grid-container-display.
+  This is a 3-column layout with equally spaced column-widths of size grid-container-display-width.
+  */
+  /* The whole content area width */
+  --content-width: 690px;
+  /* For 1-1 layout with left and right width */
+  --grid-container-width: 150px;
+  --grid-container-right-width: 530px;
+  /* For 1-1-1 layout in content area, thus content-width divided by 3 */
+  --grid-container-display-width: 230px;
+  /* For 1-1-1-1 layout in right column of grid container */
+  --grid-container_gallery_display-width: 135px;
+}
+
 /*
 General document settings
 */
 html {
   overflow-y: scroll;
+  color: var(--color);
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: medium;
+  background-color: var(--main-bg-color);
 }
 
 h1 {
@@ -34,10 +92,11 @@ Navigation and links
 .navigation {
   margin: 45px auto 0px 0px;
   text-align: left;
+  background-color: var(--main-bg-color);
 }
 
 .navigation a {
-  color: rgb(231, 172, 33);
+  color: var(--link-color);
   padding: 0px 20px 0px 0px;
   text-decoration: none;
   font-size: medium;
@@ -45,17 +104,16 @@ Navigation and links
 
 /* General Link settings */
 a {
-  color: rgb(231, 172, 33);
+  color: var(--link-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: rgb(65, 130, 168) !important;
-  /* Needs to overwrite a:visited color setting*/
+  color: var(--link-color-hover) !important;
 }
 
 a:visited {
-  color: rgb(231, 172, 33)
+  color: var(--link-color);
 }
 
 #link {
@@ -64,11 +122,12 @@ a:visited {
   text-align: right;
 }
 
+/* Circle hover */
 #circle1:hover,
 #circle1_:hover,
 #circle2:hover,
 #circle3:hover {
-  fill: rgb(247, 213, 134);
+  fill: var(--circle-color-hover);
 }
 
 /*
@@ -77,7 +136,7 @@ Content and layout
 /* Content settings */
 .content {
   /* Content div container */
-  width: 690px;
+  width: var(--content-width);
   display: block;
   margin: auto;
 }
@@ -85,7 +144,7 @@ Content and layout
 .grid-container {
   /* Grid layout for 2-column grid on publications and cv */
   display: grid;
-  grid-template-columns: 150px auto;
+  grid-template-columns: var(--grid-container-width) var(--grid-container-right-width);
   margin-bottom: 20px;
 }
 
@@ -97,7 +156,7 @@ Content and layout
 to showcase 3 elements side by side */
 .grid-container_display {
   display: grid;
-  grid-template-columns: 230px 230px 230px;
+  grid-template-columns: var(--grid-container-display-width) var(--grid-container-display-width) var(--grid-container-display-width);
   margin-bottom: 20px;
   text-align: center;
 }
@@ -109,7 +168,7 @@ Uses then also grid-item_display with
 its hover effect. */
 .grid-container_gallery_display {
   display: grid;
-  grid-template-columns: 135px 135px 135px 135px;
+  grid-template-columns: var(--grid-container_gallery_display-width) var(--grid-container_gallery_display-width) var(--grid-container_gallery_display-width) var(--grid-container_gallery_display-width);
   margin-bottom: 20px;
   text-align: center;
 }
@@ -121,7 +180,7 @@ used for instance for the demos page */
   text-align: center;
   border-style: solid;
   border-width: 5px;
-  border-color: white;
+  border-color: var(--main-bg-color);
   border-radius: 5px;
 }
 
@@ -132,7 +191,7 @@ and thus feedback for the user which item is selected */
   text-align: center;
   border-style: solid;
   border-width: 5px;
-  border-color: rgb(30, 61, 79);
+  border-color: var(--grid-item-display-hover);
   border-radius: 5px;
 }
 
@@ -146,8 +205,9 @@ Layout
 }
 
 mark {
-  background-color: rgb(228, 228, 228);
+  background-color: var(--mark-bg-color);
   border-radius: 5px;
   padding: 2px;
   font-family: math;
+  color: var(--mark-color);
 }
