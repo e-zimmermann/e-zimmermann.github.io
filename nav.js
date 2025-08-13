@@ -42,10 +42,10 @@ document.getElementById('navigationDiv').innerHTML = `
 
             <div class="grid-item">
                 <div class="navigation">
-                    <a id="aAbout" href="../index.html" style="color: var(--circle1-color)">About</a>
-                    <a id="aPublications" href="../publications.html" style="color: var(--circle1-color)">Publications</a>
-                    <a id="aDemos" href="../demos.html" style="color: var(--circle1-color)">Demos</a>
-                    <a id="aCV" href="../cv.html" style="color: var(--circle1-color)">CV</a>
+                    <a id="aAbout" href="../index.html" style="color: var(--link-color)">About</a>
+                    <a id="aPublications" href="../publications.html" style="color: var(--link-color)">Publications</a>
+                    <a id="aDemos" href="../demos.html" style="color: var(--link-color)">Demos</a>
+                    <a id="aCV" href="../cv.html" style="color: var(--link-color)">CV</a>
                 </div>
             </div>
         </div>`;

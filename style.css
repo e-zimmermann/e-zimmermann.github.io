@@ -10,24 +10,9 @@
   --circle3-color: rgb(36, 96, 130);
   --circle-color-hover: rgb(247, 213, 134);
   --grid-item-display-hover: rgb(30, 61, 79);
-  --mark-bg-color: white;
+  --mark-bg-color: rgb(219, 219, 219);
   --mark-color: black;
   --color: black;
-
-  /* Dark Mode */
-  /* --main-bg-color: rgb(30, 61, 79);
-  --link-color: rgb(231, 172, 33);
-  --link-color-hover: rgb(65, 130, 168);
-  --link-color-active: rgb(110, 168, 202);
-  --circle1-color: rgb(231, 172, 33);
-  --circle2-color: rgb(110, 168, 202);
-  --circle3-color: rgb(36, 96, 130);
-  --circle-color-hover: rgb(247, 213, 134);
-  --grid-item-display-hover: rgb(30, 61, 79);
-  --mark-bg-color: rgb(110, 168, 202);
-  --mark-color: white;
-  --color: rgb(110, 168, 202); */
-
 
   /* Content layout explanations
   The content area has content-width as overal size.
@@ -53,6 +38,43 @@
   /* For 1-1-1-1 layout in right column of grid container */
   --grid-container_gallery_display-width: 135px;
 }
+
+/* Color scheme for automatically detected dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg-color: rgb(30, 61, 79);
+    --link-color: rgb(185, 139, 29);
+    --link-color-hover: rgb(65, 130, 168);
+    --link-color-active: rgb(110, 168, 202);
+    --circle1-color: rgb(231, 172, 33);
+    --circle2-color: rgb(110, 168, 202);
+    --circle3-color: rgb(36, 96, 130);
+    --circle-color-hover: rgb(247, 213, 134);
+    --grid-item-display-hover: rgb(30, 61, 79);
+    --mark-bg-color: rgb(110, 168, 202);
+    --mark-color: white;
+    --color: rgb(110, 168, 202);
+  }
+}
+
+/* Color scheme for manually selected dark mode */
+/* Can be toogled in javascript with
+ document.body.classList.toggle("dark-mode");
+*/
+/* .dark-mode {
+  --main-bg-color: rgb(30, 61, 79);
+  --link-color: rgb(231, 172, 33);
+  --link-color-hover: rgb(65, 130, 168);
+  --link-color-active: rgb(110, 168, 202);
+  --circle1-color: rgb(231, 172, 33);
+  --circle2-color: rgb(110, 168, 202);
+  --circle3-color: rgb(36, 96, 130);
+  --circle-color-hover: rgb(247, 213, 134);
+  --grid-item-display-hover: rgb(30, 61, 79);
+  --mark-bg-color: rgb(110, 168, 202);
+  --mark-color: white;
+  --color: rgb(110, 168, 202);
+} */
 
 /*
 General document settings
