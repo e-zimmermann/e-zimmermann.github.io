@@ -32,7 +32,7 @@
   --content-width: 690px;
   /* For 1-1 layout with left and right width */
   --grid-container-width: 150px;
-  --grid-container-right-width: 530px;
+  --grid-container-right-width: 540px;
   /* For 1-1-1 layout in content area, thus content-width divided by 3 */
   --grid-container-display-width: 230px;
   /* For 1-1-1-1 layout in right column of grid container */
@@ -171,7 +171,8 @@ Content and layout
 }
 
 .grid-item {
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* Used for instance for the demos page
