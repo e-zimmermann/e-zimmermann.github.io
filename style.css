@@ -9,7 +9,7 @@
   --circle2-color: rgb(30, 61, 79);
   --circle3-color: rgb(36, 96, 130);
   --circle-color-hover: rgb(247, 213, 134);
-  --grid-item-display-hover: rgb(30, 61, 79);
+  --grid-item-display-hover: rgb(65, 130, 168);
   --mark-bg-color: rgb(219, 219, 219);
   --mark-color: black;
   --color: black;
@@ -50,7 +50,7 @@
     --circle2-color: rgb(110, 168, 202);
     --circle3-color: rgb(36, 96, 130);
     --circle-color-hover: rgb(247, 213, 134);
-    --grid-item-display-hover: rgb(30, 61, 79);
+    --grid-item-display-hover: rgb(65, 130, 168);
     --mark-bg-color: rgb(110, 168, 202);
     --mark-color: white;
     --color: rgb(110, 168, 202);
