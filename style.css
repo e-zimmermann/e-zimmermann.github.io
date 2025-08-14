@@ -13,6 +13,7 @@
   --mark-bg-color: rgb(219, 219, 219);
   --mark-color: black;
   --color: black;
+  --publication-year-color: rgb(110, 168, 202);
 
   /* Content layout explanations
   The content area has content-width as overal size.
@@ -54,6 +55,7 @@
     --mark-bg-color: rgb(110, 168, 202);
     --mark-color: white;
     --color: rgb(110, 168, 202);
+    --publication-year-color: rgb(55, 114, 149);
   }
 }
 
