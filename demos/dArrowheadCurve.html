@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>d-Arrowhead Curve</title>
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <meta charset="UTF-8">
     <meta name="author" content="Eric Zimmermann">
@@ -10,7 +11,95 @@
 </head>
 
 <body>
-    Test
+    <!-- Load naviagtion and logo by changing div content -->
+    <div id="navigationDiv" class="content"></div>
+    <script src="../nav.js"></script>
+    <script>document.getElementById('aDemos').style = "color: var(--link-color-active)";</script>
+
+    <!-- Content area -->
+    <div class="content">
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <img src="../img/demos/dArrowheadCurve/teaser.png" width="500px">
+            </div>
+
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h1>d-Arrowhead Curve</h1>
+            </div>
+
+            <div class="grid-item">Links</div>
+            <div class="grid-item">
+                <a href="../demos/dArrowheadCurve/dArrowheadCurve.html" target="_blank">Demo</a>
+                <!-- &#x2022; -->
+                <!-- <a href="http://archive.bridgesmathart.org/2025/bridges2025-373.html" target="_blank">Article</a> -->
+            </div>
+
+            <div class="grid-item">Description</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">
+                    This demo allows to generate a Sierpinski d-simplex and d-Arrowhead curve, both as extensions to arbitrary dimension of
+                    the Sierpinski triangle and arrowhead curve, respectively. The overall procedure uses reproduction rules for the d-arrowhead curves
+                    and they are visualized via binary sequences.
+                </p>
+            </div>
+
+            <div class="grid-item">Instructions</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">The demo runs as web-application. After launch
+                    the settings can be toggled using <mark>y</mark> on the keyboard and they look like:</p>
+                <img src="../img/demos/dArrowheadCurve/settings.png" width="400px" class="imgCenter">
+
+                <p>
+                    The following list describes the settings:
+                <ul>
+                    <li><mark>dim</mark> is a slider controlling the dimension and ranges from 2 to 7.</li>
+                    <li><mark>Align Simplex Points V1 (2D, 3D)</mark> is a checkbox which aligns the last point (for 2-
+                        and 3-simplex) with the up-vector (y-direction)
+                        via rotations. By definition the first d simplex points are the standard basis and the (d+1)-th
+                        point lies on the line with direction (1,...,1).
+                        Aligning them provides a more natural placement of such simplex on its bottom and allows a more
+                        comfortable rotation via mouse.
+                    </li>
+                    <li><mark>Use Simplex Points V2</mark> is a checkbox which uses another approach to generate simplex
+                        points for a regular d-simplex. In this it incrementally embeds existing points
+                        one dimension higher, lowers the last coordinate of those points, and finds a new point along
+                        the new coordinate axis (in positive direction), s.t. all points have the same distance to the
+                        origin.</li>
+                    <li>The <mark>input field</mark> takes a list of integers separated by commas representing a
+                        reproduction rule. An example for such rule in dimension 2 is: 0,2,1,0,1,2,1,0,2. When the
+                        respective dimension is selected (via the dim slider) then button <mark>Generate</mark> creates
+                        the Sierpinski simplex, arrowhead curve, and binary sequences for the specified dimension and
+                        rule.</li>
+                    <li><mark>level</mark> is a slider to determine the number of steps the reproduction rule is
+                        applied.</li>
+                    <li><mark>Show Mesh</mark> as checkbox allows to show/hide the Sierpinski simplex and
+                        <mark>alpha</mark> as a slider controls
+                        its transparency.
+                    </li>
+                    <li><mark>Show Curve(s)</mark> as checkboxes allow to show/hide the arrowhead curves shown as
+                        greased line (left) and/or tube (right). They thickness can be controlled via the slider
+                        <mark>scale</mark>.
+                    </li>
+                    <li><mark>Show Binary Sequences</mark> and <mark>Separators</mark> are checkboxes toggling the
+                        visualization of binary sequences and separators between elements, respectively.
+                        The slider <mark>width</mark> controls the overall width of the visualization and <mark>Full
+                            Height</mark> as checkbox provides a scaling directly placing the sequences above each other
+                        for better
+                        comparison.</li>
+                    <li><mark>Show Axes</mark> and <mark>Reset View</mark> as checkboxes allows to show coordinate axes
+                        and reset the overall view to the default value, respectively.</li>
+                </ul>
+                </p>
+                <p>Rotation and translation in the scene can be achieved by holding the <mark>left mouse</mark> or
+                    <mark>right mouse</mark>,
+                    respectively. The <mark>mouse wheel</mark> allows to zoom in and out.
+                </p>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>
