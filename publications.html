@@ -6,6 +6,15 @@
     <meta charset="UTF-8">
     <meta name="author" content="Eric Zimmermann">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* Allows to zoom images on click */
+        img {
+            transition: -webkit-transform 0.25s ease;
+        }
+        img:active {
+            -webkit-transform: scale(4);
+        }
+    </style>
 </head>
 
 <body>
@@ -19,6 +28,7 @@
     <div class="content">
         <div class="grid-container">
             <div class="grid-item"></div>
+
             <!--
 
             2025
