@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hilbert Signatures</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="author" content="Eric Zimmermann">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <style>
+        /* Allows to zoom images on click */
+        img {
+            transition: -webkit-transform 0.25s ease;
+        }
+        img:active {
+            -webkit-transform: scale(2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Load naviagtion and logo by changing div content -->
+    <div id="navigationDiv" class="content"></div>
+    <script src="../nav.js"></script>
+    <script>document.getElementById('aDemos').style = "color: var(--link-color-active)";</script>
+
+    <!-- Content area -->
+    <div class="content">
+        <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <img src="../img/demos/HilbertSignatures/teaser.png" width="500px">
+            </div>
+
+            <div class="grid-item"></div>
+            <div class="grid-item">
+                <h1>Hilbert Signatures</h1>
+            </div>
+
+            <div class="grid-item">Links</div>
+            <div class="grid-item">
+                <a href="../demos/HilbertSignatures/demo.html" target="_blank">Demo</a>
+                <!-- &#x2022; -->
+                <!-- <a href="https://arxiv.org/abs/2604.19287" target="_blank">arXiv</a> -->
+                <!-- &#x2022; -->
+                <!-- <a href="http://archive.bridgesmathart.org/2025/bridges2025-373.html" target="_blank">Article</a> -->
+            </div>
+
+            <div class="grid-item">Year</div>
+            <div class="grid-item">2026</div>
+
+            <div class="grid-item">Description</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">
+                    The demo represents the implementation of the Hilbert signatures visualization for the compact and comparative representation
+                    and exploration of high-dimensional data sets. A Hilbert signature represents a sequence of density measurements taken along
+                    a Hilbert curve aligned with the data. Applied to multiple data sets and aligned side-by-side allows comparison of the data sets, which are
+                    related via a common Hilbert curve.
+                </p>
+            </div>
+            <div class="grid-item">Data</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">In the following we provide the three data sets: Cars, Walmart, and Nutrient
+                    which can be directly used in this demo.
+                    Each entry consists of a normalized version in the demo-required format already split by some value
+                    indicated in brackets, an info-file, a Hilbert curve sample file created in
+                    dimension n, iteration p, and consisting of s samples, and the original, obtained data file.<br>
+                <ul>
+                    <li>
+                        <a href="./HilbertSignatures/data/cars/carsByYearNorm.json" target="_blank">Cars (by year)</a>
+                        &#x2022;
+                        <a href="./HilbertSignatures/data/cars/cars.md" target="_blank">Info</a> &#x2022;
+                        <a href="./HilbertSignatures/data/cars/n6_p3_a0_b1_nos256.json" target="_blank">HC (n6, p3,
+                            s256)</a> &#x2022;
+                        <a href="./HilbertSignatures/data/cars/cars.json" target="_blank">Cars (original)</a>
+                    </li>
+                    <li>
+                        <a href="./HilbertSignatures/data/walmart/walmartByMonthNorm.json" target="_blank">Walmart (by
+                            month)</a> &#x2022;
+                        <a href="./HilbertSignatures/data/walmart/walmart.md" target="_blank">Info</a> &#x2022;
+                        <a href="./HilbertSignatures/data/walmart/n5_p3_a0_b1_nos256.json" target="_blank">HC (n5, p3,
+                            s256)</a> &#x2022;
+                        <a href="./HilbertSignatures/data/walmart/Walmart_Sales.csv">Walmart (original)</a>
+                    </li>
+                    <li>
+                        <a href="./HilbertSignatures/data/nutrient/nutrientByGroupNorm.json" target="_blank">Nutrient
+                            (by group) </a> &#x2022;
+                        <a href="./HilbertSignatures/data/nutrient/nutrient.md" target="_blank">Info</a> &#x2022;
+                        <a href="./HilbertSignatures/data/nutrient/n14_p1_a0_b1_nos256.json" target="_blank">HC (n14,
+                            p1,
+                            s256)</a> &#x2022;
+                        <a href="./HilbertSignatures/data/nutrient/nutrient.csv" target="_blank">Nutrient (original)</a>
+
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    A data file, which is uploaded via <mark>Upload Points</mark>, need to carry the format shown in the
+                    upcoming image, i.e., it is a json file consisting of an array holding objects. Each object
+                    represents
+                    one point set (cf. upcoming image in which the first object is expanded) providing information about its
+                    dimension, the number of points (numOfPoints), an array consisting of arrays (each of length equal
+                    to the dimension) containing the normalized points, the number of classes (numOfClasses), and
+                    an array holding a classification index for each point. The latter two can be null if this
+                    information is not available or needed. The last entry refers to the axis-aligned bounding box (aabb) as an
+                    array holding the minimum, maximium, and distance between both. This was used to normalize the
+                    data. Note that every point set got normalized with respect to the bounding box of all the point
+                    sets' bounding boxes to keep them comparable with each other.</p>
+                <img src="../img/demos/HilbertSignatures/dataFormat.png" width="100%" class="imgCenter">
+                <p>
+                    A samples file, which is uploaded via <mark>Upload Samples</mark>, need to carry the format shown in the following
+                    image, i.e., it is a json file consisting of one object holding the dimension n and iteration p of the Hilbert curve.
+                    Additionally, it stores the number of samples (numOfSamples), the interval bounds t0, t1 from [0,1] with t0 < t1, an info
+                    whether the curve got subsampled (0 - false, 1 - true), and an array of arrays (each of length equal
+                    to dimension n) containing the normalized samples (points). Such samples file can be generated using this
+                    <a href="./HilbertSignatures/data/hc/hilbertCurvePoints.py" target="_blank">python script</a>, which requires to prescribe
+                    the parameters n (HC dimension), p (HC iteration), t0 (lower bound), t1 (upper bound), subsampling, and targetNumOfSamples.
+                </p>
+                <img src="../img/demos/HilbertSignatures/samplesFormat.png" width="100%" class="imgCenter">
+
+            </div>
+
+            <div class="grid-item">Instructions</div>
+            <div class="grid-item">
+                <p style="margin-top: 0px;">The demo runs as web-application. After launch
+                    the settings can be toggled using <mark>y</mark> on the keyboard and they look like:</p>
+                <img src="../img/demos/HilbertSignatures/settings.png" width="300px" class="imgCenter">
+
+                <p>
+                    For a first run, we can upload a data file via <mark>Upload Points</mark> and a samples file via <mark>Upload Samples</mark> (dimensions
+                    of data and samples need to agree), and apply <mark>Generate</mark>. Further functionality is described in the following list:
+                <ul>
+                    <li>The <mark>Upload Points</mark> button allows to load data files described above.</li>
+                    <li>The <mark>Upload Samples</mark> button allows to load samples files described above.</li>
+                    <li>The <mark>compact Vis</mark> and <mark>detailed Vis</mark> radio buttons provide to switch between the compact and detailed
+                    visualiazations, respectively.</li>
+                    <li>The <mark>PS</mark> slider allows to show the detailed visualization (detailed Vis) for the selected point set. When the linked PC
+                    is active, it also shows the parallel coordinates of the respective point set.</li>
+                    <li>The slider <mark>r</mark> controls the radius used for the spherical neighborhood used in the density measure.
+                    It is bound by 0 from below and the square root of the dimension from above.</li>
+                    <li>Checkbox <mark>Covering Radii</mark> determines a radius for each point set individually using the
+                        bisection method until every data point in the respective point set is covered at least once
+                        by the sperhical neighborhoods. Checkbox <mark>Global Norm.</mark> uses the extrema found among the
+                    density measurements of all point sets for normalization. If this is not active, then each point set provides
+                their own normalization extrema. Note, it is extrema, because the density measure determines either the number of
+            neighbors (positive), or if this is empty, the minimal distance to the nearest neighbor (negative). </li>
+                    <li>The <mark>Generate</mark> button evaluates the density measure for each sample and for all point sets (compact Vis) or
+                        the currently selected point set (detailed Vis) and draws the respective visualizations. It also updates the linked PC plot, if this is activated. The <mark>Automatize</mark> checkbox
+                    automatically calls <mark>Generate</mark>.</li>
+                    <li>The <mark>Activate Custom Points 2D</mark> toggles the possibiliy to manually place points in a 2-dimensional point set.
+                        When active it shows a Hilbert curve, whose iteration can be changed by uploading a 2-dimensional samples file. The <mark>increment PS</mark> button allows
+                        to add another point set and the <mark>Clear selected PS</mark> removes the points already present in the currently
+                        selected point set (determined by the PS slider).</li>
+                    <li>The checkbox <mark>Linked PC</mark> shows the parallel coordinates plot for the currently selected point set.
+                        The checkboxes <mark>PC</mark> and <mark>TV</mark> show an experimental stacking of visualizations using parallel coordinates
+                        and tabular visualization of all point sets, respectively.</li>
+                    <li>The button <mark>Normalize PS</mark> is a pre-processing method which normalizes a data file (in the format described above)
+                        with respect to the axis-aligned bounding abox of the union of data points. The button <mark>Calc Covering Radii</mark>
+                        determines the covering radii for the current data file (which is automatically done when covering radii are to be used and it was not calculated yet for the current data). The button <mark>Print Info</mark>
+                    logs various information about the data to the console.</li>
+                    <li>The key <mark>x</mark> toggles the point coverage information for each point set ranging from 0 (0%) to 1 (100%).</li>
+                </ul>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

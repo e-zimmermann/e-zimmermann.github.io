@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hilbert Signatures</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Eric Zimmermann">
+
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        #guiDiv {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 5px;
+            padding: 10px;
+            visibility: visible;
+            background-color: #979797;
+        }
+
+        #visDiv {
+            /* margin: 10px; */
+            float: left;
+        }
+
+        #infoDiv {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border-radius: 5px;
+            padding: 10px;
+            visibility: visible;
+            background-color: #979797;
+        }
+
+        .btn {
+            padding: 5px;
+            background-color: rgb(253, 140, 48);
+            font-size: medium;
+            border-width: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NOTE: Vis element -->
+    <div>
+        <div id="visDiv"></div>
+        <div id="comVisDiv"></div>
+        <div class="linkedVisDiv" id="pcDiv"></div>
+        <div class="linkedVisDiv" id="tsneDiv"></div>
+        <div class="linkedVisDiv" id="pts2DDiv"></div>
+    </div>
+
+    <!-- NOTE: GUI elements -->
+    <div id="guiDiv">
+
+        <p>
+            <input type="file" id="pointsFileInput" style="display:none;"></input>
+            <label for="pointsFileInput" class="btn">Upload Points</label>
+            <input type="file" id="samplesFileInput" style="display:none;"></input>
+            <label for="samplesFileInput" class="btn">Upload Samples</label>
+        </p>
+        <hr>
+        <p>
+            <input type="radio" id="vis0Radio" name="radio" value="Radio1" checked onclick="setVis(0)">
+            <label id="vis0RadioLabel" for="radio1">compact Vis</label>
+            <input type="radio" id="vis1Radio" name="radio" value="Radio2" onclick="setVis(1)">
+            <label id="vis1RadioLabel" for="radio2">detailed Vis</label><br>
+        </p>
+        <hr>
+        <p>
+            <input id="pointSetSlider" type="range" min="0" max="0" step="1" value="0" class="slider"
+                oninput="setPointSet(this.value)">
+            <label id="pointSetSliderLabel" for="pointSetSlider">PS = </label><br>
+            <input id="radiusSlider" type="range" min="0" max="2" step="0.01" value="1.5" class="slider"
+                oninput="setRadius(this.value)">
+            <label id="radiusSliderLabel" for="radiusSlider">r = </label>
+            <input id="radiusSliderInput" type="text" style="width: 50px;"
+                onfocusout="setRadius(parseFloat(this.value))"><br>
+
+            <input type="checkbox" id="localRadiiCheckbox" oninput="setLocalRadii(this.checked)">
+            <label for="checkboxID">Covering Radii</label>
+            <input type="checkbox" id="globalNormalizationCheckbox" oninput="setGlobalNormalization(this.checked)">
+            <label for="checkboxID">Global Norm.</label>
+        </p>
+        <hr>
+        <p>
+            <button type="button" class="btn" onclick="generate()">Generate</button>
+            <input type="checkbox" id="automatizeCheckbox" name="checkbox1" value="CheckboxValue" checked
+                oninput="setAutomatized(this.checked)">
+            <label id="automatizeCheckboxLabel" for="checkboxID">Automatize</label><br>
+        </p>
+        <hr>
+        <p>
+        <p>
+            <input type="checkbox" id="pts2DCheckbox" name="checkbox1" value="CheckboxValue"
+                oninput="toggleLinkedVis('PTS2D', this.checked)">
+            <label for="pts2DCheckbox">Activate Custom Points 2D</label><br>
+        </p>
+        <p>
+            <button type="button" class="btn" onclick="customPoints2DMods(0)">Increment PS</button>
+            <button type="button" class="btn" onclick="customPoints2DMods(1)">Clear selected PS</button>
+        </p>
+        <hr>
+        <p>
+            <input type="checkbox" id="pcCheckbox" name="checkbox1" value="CheckboxValue"
+                oninput="toggleLinkedVis('PC', this.checked)">
+            <label for="pcCheckbox">Linked PC</label>
+            <input type="checkbox" id="comVisPCCheckbox" name="checkbox1" value="CheckboxValue"
+                oninput="toggleComVis('comVisPC', this.checked)">
+            <label for="comVisPCCheckbox">PC</label>
+            <input type="checkbox" id="comVisTVCheckbox" name="checkbox1" value="CheckboxValue"
+                oninput="toggleComVis('comVisTV', this.checked)">
+            <label for="comVisTVCheckbox">TV</label>
+        </p>
+        <hr>
+        <p>
+            <button type="button" class="btn" onclick="normalizeViaAABB(data)">Normalize PS</button>
+            <button type="button" class="btn" onclick="calculateLocalRadii()">Calc Covering Radii</button>
+            <button type="button" class="btn" onclick="printInfo()">Print Info</button>
+        </p>
+        <hr>
+        <p>
+            <label>y - toggle gui &#9670; x - toggle coverage</label><br>
+        </p>
+
+    </div>
+
+    <div id="infoDiv">
+
+        <label id="pointsCoverageLabel">Point Coverage: </label>
+    </div>
+
+    <!-- NOTE: Call scripts -->
+    <script src="libs/d3.v7.min.js"></script>
+    <script src="libs/js-colormaps.js"></script>
+
+    <script src="src/helper.js"></script>
+    <script src="src/config.js"></script>
+    <script src="src/math.js"></script>
+    <script src="src/mathMethods.js"></script>
+    <script src="src/gui.js"></script>
+    <script src="src/vis.js"></script>
+    <script src="src/linkedVis.js"></script>
+    <script src="src/comVis.js"></script>
+    <script src="src/preProcess.js"></script>
+
+    <script src="data/dataHack.js"></script>
+    <script src="data/dataHCHack.js"></script>
+</body>
+
+</html>
