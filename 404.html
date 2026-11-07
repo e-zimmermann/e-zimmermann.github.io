@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eric Zimmermann – moved to ezimmermann.de</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <!-- GitHub Pages shows this page for every address that no longer exists here.
+         It forwards to the same address on https://ezimmermann.de/ -->
+    <script>
+        (function () {
+            // Demo apps that were renamed during the move
+            var renamed = {
+                '/demos/dArrowheadCurve/dArrowheadCurve.html': '/demos/dArrowheadCurve/demo.html',
+                '/demos/multiFocusProbes/multiFocusProbesDemo.html': '/demos/multiFocusProbes/demo.html',
+                '/demos/vractalExplorer/vractalExplorerDemo.html': '/demos/vractalExplorer/demo.html'
+            };
+            var path = renamed[location.pathname] || location.pathname;
+            location.replace('https://ezimmermann.de' + path + location.search + location.hash);
+        })();
+    </script>
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <p>This page has moved to <a href="https://ezimmermann.de/">ezimmermann.de</a>.</p>
+</body>
+
+</html>
